@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "username": "admin",
-      "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "username": "Nikhil",
+      "passwordHash": "a69356944db00e3dd81dba57dae42945ccf3b5715cb76b36ed5f78c10c2b8bbf",
       "role": "admin",
       "displayName": "System Administrator",
       "avatar": "A",
@@ -31,14 +31,28 @@
           "icon": "fa-microchip",
           "color": "#2a9d8f",
           "image": "lab1",
-          "items": ["STEM-001","STEM-002","STEM-003","STEM-004","STEM-005","SFTY-001"]
+          "items": [
+            "STEM-001",
+            "STEM-002",
+            "STEM-003",
+            "STEM-004",
+            "STEM-005",
+            "SFTY-001"
+          ]
         },
         "lab2": {
           "name": "Fabrication Lab 2",
           "icon": "fa-cube",
           "color": "#e76f51",
           "image": "lab2",
-          "items": ["STEM-010","STEM-024","STEM-055","STEM-034","STEM-105","SFTY-002"]
+          "items": [
+            "STEM-010",
+            "STEM-024",
+            "STEM-055",
+            "STEM-034",
+            "STEM-105",
+            "SFTY-002"
+          ]
         }
       }
     },
@@ -57,14 +71,28 @@
           "icon": "fa-bolt",
           "color": "#457b9d",
           "image": "lab1",
-          "items": ["STEM-001","STEM-003","STEM-006","STEM-007","STEM-008","SFTY-001"]
+          "items": [
+            "STEM-001",
+            "STEM-003",
+            "STEM-006",
+            "STEM-007",
+            "STEM-008",
+            "SFTY-001"
+          ]
         },
         "lab2": {
           "name": "Computer Lab",
           "icon": "fa-laptop",
           "color": "#6d4c8f",
           "image": "lab3",
-          "items": ["COMP-001","COMP-002","COMP-003","COMP-005","COMP-006","TOOL-001"]
+          "items": [
+            "COMP-001",
+            "COMP-002",
+            "COMP-003",
+            "COMP-005",
+            "COMP-006",
+            "TOOL-001"
+          ]
         }
       }
     }
