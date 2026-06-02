@@ -1,0 +1,102 @@
+[
+  {
+    "code": "STEM-001",
+    "name": "First-Aid Kit",
+    "img": "./data/images/lab/first_aid_kit.jpg",
+    "category": "Safety",
+    "domain": "STEM",
+    "price": 867,
+    "quantity": 2,
+    "description": "Standard first-aid kit with bandages, antiseptic, and basic medical supplies."
+  },
+  {
+    "code": "STEM-002",
+    "name": "Safety Goggles",
+    "img": "./data/images/lab/safety_goggles.jpg",
+    "category": "Safety",
+    "domain": "STEM",
+    "price": 4739,
+    "quantity": 30,
+    "description": "Anti-fog safety goggles for lab protection."
+  },
+  {
+    "code": "STEM-003",
+    "name": "Arduino Uno R3",
+    "img": "./data/images/lab/arduino_uno.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 599,
+    "quantity": 15,
+    "description": "Microcontroller board based on ATmega328P for prototyping."
+  },
+  {
+    "code": "STEM-004",
+    "name": "Breadboard (830 tie-points)",
+    "img": "./data/images/lab/breadboard.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 120,
+    "quantity": 25,
+    "description": "Solderless breadboard for circuit prototyping."
+  },
+  {
+    "code": "STEM-005",
+    "name": "Multimeter Digital",
+    "img": "./data/images/lab/multimeter.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 850,
+    "quantity": 10,
+    "description": "Digital multimeter for measuring voltage, current, and resistance."
+  },
+  {
+    "code": "STEM-006",
+    "name": "Soldering Iron Kit",
+    "img": "./data/images/lab/soldering_iron.jpg",
+    "category": "Tools",
+    "domain": "STEM",
+    "price": 450,
+    "quantity": 8,
+    "description": "25W soldering iron with stand and solder wire."
+  },
+  {
+    "code": "STEM-007",
+    "name": "Raspberry Pi 4 (4GB)",
+    "img": "./data/images/lab/raspberry_pi.jpg",
+    "category": "Computing",
+    "domain": "STEM",
+    "price": 4500,
+    "quantity": 5,
+    "description": "Single-board computer for IoT and programming projects."
+  },
+  {
+    "code": "STEM-008",
+    "name": "Jumper Wire Set (M-M, M-F, F-F)",
+    "img": "./data/images/lab/jumper_wires.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 99,
+    "quantity": 20,
+    "description": "120-piece jumper wire assortment for breadboard use."
+  },
+  {
+    "code": "STEM-009",
+    "name": "LED Assortment Pack",
+    "img": "./data/images/lab/led_pack.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 150,
+    "quantity": 10,
+    "description": "100-piece LED assortment in multiple colours."
+  },
+  {
+    "code": "SFTY-001",
+    "name": "Fire Extinguisher (CO2 2kg)",
+    "img": "./data/images/lab/fire_extinguisher.jpg",
+    "category": "Safety",
+    "domain": "SFTY",
+    "price": 1500,
+    "quantity": 2,
+    "description": "CO2 fire extinguisher for electrical fires in lab environments."
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+      "role": "admin",
+      "displayName": "System Administrator",
+      "avatar": "A",
+      "color": "#e63946"
+    },
+    {
+      "username": "subadmin",
+      "passwordHash": "3a107e5b0a3e7fbc1af9793f43d27c7b6f37fe50e8c6eca96e0efa5d48c4dc44",
+      "role": "subadmin",
+      "displayName": "Sub Administrator",
+      "avatar": "S",
+      "color": "#f4a261"
+    },
+    {
+      "username": "dvs",
+      "passwordHash": "9e9b4af12de66741bef0a0f2bdcc3f434acf07e83ef8b4c8a85d04b0f4c86731",
+      "role": "school",
+      "displayName": "DVS School",
+      "avatar": "D",
+      "color": "#2a9d8f",
+      "schoolCode": "DVS",
+      "dataFile": "DVS",
+      "labs": {
+        "lab1": {
+          "name": "Tinkering Lab 1",
+          "icon": "fa-microchip",
+          "color": "#2a9d8f",
+          "image": "lab1",
+          "items": ["STEM-001","STEM-002","STEM-003","STEM-004","STEM-005","SFTY-001"]
+        },
+        "lab2": {
+          "name": "Fabrication Lab 2",
+          "icon": "fa-cube",
+          "color": "#e76f51",
+          "image": "lab2",
+          "items": ["STEM-010","STEM-024","STEM-055","STEM-034","STEM-105","SFTY-002"]
+        }
+      }
+    },
+    {
+      "username": "dbs",
+      "passwordHash": "7f4c3a8e2d1b9f6e5c0a4d7b2e8f1c3a6d9e0b4f7c2a5d8e1b6c9f3a0d4e7b",
+      "role": "school",
+      "displayName": "DBS School",
+      "avatar": "B",
+      "color": "#457b9d",
+      "schoolCode": "DBS",
+      "dataFile": "DBS",
+      "labs": {
+        "lab1": {
+          "name": "Electronics Lab",
+          "icon": "fa-bolt",
+          "color": "#457b9d",
+          "image": "lab1",
+          "items": ["STEM-001","STEM-003","STEM-006","STEM-007","STEM-008","SFTY-001"]
+        },
+        "lab2": {
+          "name": "Computer Lab",
+          "icon": "fa-laptop",
+          "color": "#6d4c8f",
+          "image": "lab3",
+          "items": ["COMP-001","COMP-002","COMP-003","COMP-005","COMP-006","TOOL-001"]
+        }
+      }
+    }
+  ],
+  "_note": "Passwords: admin=admin@123, subadmin=sub@123, dvs=72C8E609, dbs=DBS@2024. SHA-256 hashed client-side."
+}

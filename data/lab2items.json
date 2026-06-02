@@ -1,0 +1,102 @@
+[
+  {
+    "code": "STEM-010",
+    "name": "3D Printer (FDM)",
+    "img": "./data/images/lab/3d_printer.jpg",
+    "category": "Fabrication",
+    "domain": "STEM",
+    "price": 22000,
+    "quantity": 2,
+    "description": "Fused deposition modelling 3D printer for prototyping."
+  },
+  {
+    "code": "STEM-024",
+    "name": "Laser Cutter 40W",
+    "img": "./data/images/lab/laser_cutter.jpg",
+    "category": "Fabrication",
+    "domain": "STEM",
+    "price": 45000,
+    "quantity": 1,
+    "description": "CO2 laser cutter for acrylic, wood, and cardboard."
+  },
+  {
+    "code": "STEM-034",
+    "name": "Oscilloscope 2CH 100MHz",
+    "img": "./data/images/lab/oscilloscope.jpg",
+    "category": "Measurement",
+    "domain": "STEM",
+    "price": 18500,
+    "quantity": 3,
+    "description": "Dual-channel digital oscilloscope for signal analysis."
+  },
+  {
+    "code": "STEM-055",
+    "name": "Function Generator 5MHz",
+    "img": "./data/images/lab/function_generator.jpg",
+    "category": "Measurement",
+    "domain": "STEM",
+    "price": 8200,
+    "quantity": 2,
+    "description": "Signal generator producing sine, square, and triangle waveforms."
+  },
+  {
+    "code": "STEM-105",
+    "name": "Drone Kit (Quadcopter)",
+    "img": "./data/images/lab/drone_kit.jpg",
+    "category": "Robotics",
+    "domain": "STEM",
+    "price": 6500,
+    "quantity": 4,
+    "description": "DIY quadcopter drone kit with remote controller."
+  },
+  {
+    "code": "STEM-011",
+    "name": "VR Headset (Standalone)",
+    "img": "./data/images/lab/vr_headset.jpg",
+    "category": "Computing",
+    "domain": "STEM",
+    "price": 32000,
+    "quantity": 2,
+    "description": "Standalone VR headset for immersive learning experiences."
+  },
+  {
+    "code": "STEM-012",
+    "name": "CNC Router Mini",
+    "img": "./data/images/lab/cnc_router.jpg",
+    "category": "Fabrication",
+    "domain": "STEM",
+    "price": 28000,
+    "quantity": 1,
+    "description": "Mini CNC router for milling wood and soft metals."
+  },
+  {
+    "code": "STEM-013",
+    "name": "Power Supply (Variable 0-30V)",
+    "img": "./data/images/lab/power_supply.jpg",
+    "category": "Electronics",
+    "domain": "STEM",
+    "price": 3200,
+    "quantity": 5,
+    "description": "Variable DC bench power supply with current limiting."
+  },
+  {
+    "code": "STEM-014",
+    "name": "Robotic Arm Kit (6-DOF)",
+    "img": "./data/images/lab/robotic_arm.jpg",
+    "category": "Robotics",
+    "domain": "STEM",
+    "price": 12000,
+    "quantity": 2,
+    "description": "6-degree-of-freedom robotic arm for automation experiments."
+  },
+  {
+    "code": "SFTY-002",
+    "name": "Safety Signage Board Set",
+    "img": "./data/images/lab/safety_signs.jpg",
+    "category": "Safety",
+    "domain": "SFTY",
+    "price": 750,
+    "quantity": 1,
+    "description": "Set of 10 ISO-standard lab safety signage boards."
+  }
+]
