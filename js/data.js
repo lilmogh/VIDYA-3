@@ -11,6 +11,33 @@ const dataStore = (() => {
 
   const _cache = {};           // { lab1: [...], lab2: [...], lab3: [...] }
   const AUDIT_KEY = APP_CONFIG.storage.audits;
+  let firebaseDB = null;
+  let dbAudits = {}; // memory mirror
+
+  /* ── Initialize Data ── */
+  async function init() {
+    if (APP_CONFIG.firebaseConfig && APP_CONFIG.firebaseConfig.apiKey !== "YOUR_API_KEY") {
+      if (!window.firebase.apps.length) {
+        window.firebase.initializeApp(APP_CONFIG.firebaseConfig);
+      }
+      firebaseDB = window.firebase.database();
+      
+      // Fetch initial data
+      const snap = await firebaseDB.ref('audits').once('value');
+      dbAudits = snap.val() || {};
+      localStorage.setItem(AUDIT_KEY, JSON.stringify(dbAudits));
+
+      // Listen for updates
+      firebaseDB.ref('audits').on('value', snapshot => {
+        dbAudits = snapshot.val() || {};
+        localStorage.setItem(AUDIT_KEY, JSON.stringify(dbAudits));
+      });
+    } else {
+      // Fallback to local storage if Firebase is not configured
+      try { dbAudits = JSON.parse(localStorage.getItem(AUDIT_KEY) || '{}'); }
+      catch { dbAudits = {}; }
+    }
+  }
 
   /* ── Load item master file ── */
   async function _loadFile(labKey) {
@@ -38,8 +65,7 @@ const dataStore = (() => {
   // results: [ [code, status], ... ]  ← minimal footprint
 
   function getAudits() {
-    try { return JSON.parse(localStorage.getItem(AUDIT_KEY) || '{}'); }
-    catch { return {}; }
+    return dbAudits;
   }
 
   function saveAudit(auditId, meta, decisions) {
@@ -47,15 +73,25 @@ const dataStore = (() => {
     audits[auditId] = {
       meta,
       results: decisions.map(d => [d.item.code, d.status.charAt(0)])
-      // W = Well Present, B = Broken, M = Missing
     };
-    // Prune old audits (keep last 200)
+    
+    // Prune old audits (keep last 200 locally)
     const keys = Object.keys(audits);
     if (keys.length > 200) {
       const oldest = keys.sort().slice(0, keys.length - 200);
       oldest.forEach(k => delete audits[k]);
     }
-    localStorage.setItem(AUDIT_KEY, JSON.stringify(audits));
+    
+    // Update local mirror immediately
+    dbAudits = audits;
+    localStorage.setItem(AUDIT_KEY, JSON.stringify(dbAudits));
+
+    // Save to Firebase
+    if (firebaseDB) {
+      firebaseDB.ref('audits/' + auditId).set(audits[auditId]).catch(err => {
+        console.error('[Firebase] Save error:', err);
+      });
+    }
   }
 
   function expandAudit(auditId) {
@@ -89,6 +125,7 @@ const dataStore = (() => {
   }
 
   return {
+    init,
     resolveLabItems,
     saveAudit,
     expandAudit,

@@ -111,44 +111,80 @@ const swipeEngine = {
   _attachGestures: function (card) {
     const T = APP_CONFIG.swipe.threshold;
 
+    card.style.touchAction = 'none'; // hint for modern browsers
+    
+    let startX = 0, startY = 0;
+    let dragging = false;
+
     const onStart = (x, y) => {
-      this._sx = x; this._sy = y; this._dragging = true;
+      startX = x; startY = y; dragging = true;
       card.style.transition = 'none';
     };
 
     const onMove = (x, y) => {
-      if (!this._dragging) return;
-      const dx = x - this._sx, dy = y - this._sy;
-      card.style.transform = `translate(${dx}px,${dy}px) rotate(${dx * 0.06}deg)`;
-      card.querySelector('.swipe-overlay--right')?.classList.toggle('visible', dx > T);
-      card.querySelector('.swipe-overlay--left') ?.classList.toggle('visible', dx < -T);
-      card.querySelector('.swipe-overlay--up')   ?.classList.toggle('visible', dy < -T);
-      card.querySelector('.swipe-overlay--down') ?.classList.toggle('visible', dy > T);
+      if (!dragging) return;
+      const dx = x - startX, dy = y - startY;
+      card.style.transform = `translate(${dx}px,${dy}px) rotate(${dx * 0.05}deg)`;
+      
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+      
+      card.querySelector('.swipe-overlay--right')?.classList.toggle('visible', dx > T && absDx > absDy);
+      card.querySelector('.swipe-overlay--left') ?.classList.toggle('visible', dx < -T && absDx > absDy);
+      card.querySelector('.swipe-overlay--up')   ?.classList.toggle('visible', dy < -T && absDy > absDx);
+      card.querySelector('.swipe-overlay--down') ?.classList.toggle('visible', dy > T && absDy > absDx);
     };
 
     const onEnd = (x, y) => {
-      if (!this._dragging) return;
-      this._dragging = false;
-      const dx = x - this._sx, dy = y - this._sy;
-      if      (dx >  T) this.decide('Well Present');
-      else if (dx < -T) this.decide('Broken');
-      else if (dy < -T) this.decide('Missing');
-      else if (dy >  T) this.undo();
-      else this._snapBack(card);
+      if (!dragging) return;
+      dragging = false;
+      const dx = x - startX, dy = y - startY;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+      
+      if (absDx > absDy) {
+        if (dx > T) this.decide('Well Present');
+        else if (dx < -T) this.decide('Broken');
+        else this._snapBack(card);
+      } else {
+        if (dy < -T) this.decide('Missing');
+        else if (dy > T) this.undo();
+        else this._snapBack(card);
+      }
     };
 
-    // Touch
-    card.addEventListener('touchstart', e => { const t=e.touches[0]; onStart(t.clientX,t.clientY); }, {passive:true});
-    card.addEventListener('touchmove',  e => { const t=e.touches[0]; onMove(t.clientX,t.clientY);  }, {passive:true});
-    card.addEventListener('touchend',   e => { const t=e.changedTouches[0]; onEnd(t.clientX,t.clientY); });
+    // --- Touch ---
+    card.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      onStart(t.clientX, t.clientY);
+    }, {passive: true});
 
-    // Mouse
-    let _bound = false;
-    const _mm = e => { if(this._dragging) onMove(e.clientX,e.clientY); };
-    const _mu = e => { if(this._dragging) { onEnd(e.clientX,e.clientY); } };
+    card.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      e.preventDefault(); // Stop page scroll
+      const t = e.touches[0];
+      onMove(t.clientX, t.clientY);
+    }, {passive: false});
+
+    card.addEventListener('touchend', e => {
+      if (!dragging) return;
+      const t = e.changedTouches[0];
+      onEnd(t.clientX, t.clientY);
+    });
+
+    // --- Mouse ---
+    const mm = e => { if (dragging) onMove(e.clientX, e.clientY); };
+    const mu = e => {
+      if (dragging) onEnd(e.clientX, e.clientY);
+      window.removeEventListener('mousemove', mm);
+      window.removeEventListener('mouseup', mu);
+    };
+    
     card.addEventListener('mousedown', e => {
-      onStart(e.clientX,e.clientY);
-      if (!_bound) { window.addEventListener('mousemove',_mm); window.addEventListener('mouseup',_mu); _bound=true; }
+      e.preventDefault(); // Prevent native image dragging
+      onStart(e.clientX, e.clientY);
+      window.addEventListener('mousemove', mm);
+      window.addEventListener('mouseup', mu);
     });
   },
 

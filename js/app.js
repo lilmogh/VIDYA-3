@@ -18,6 +18,8 @@ const app = (() => {
 
   /* ── Boot ── */
   async function boot() {
+    await dataStore.init(); // Initialize data store and Firebase
+
     const session = auth.currentUser();
     if (session) {
       const user = auth.currentUserFull();
